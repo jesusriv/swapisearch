@@ -14,7 +14,7 @@ const CAHCE_KEY = 'httpCharacterCache'
 export class AppComponent {
   totalCharacters = 87;
   characters: any = [];
-  charactersPerPage = 4; 
+  charactersPerPage = 6; 
   pageNumbers: any = [];
   currentPage = 1;
   apiLink: any = "https://swapi.co/api/people";

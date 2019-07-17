@@ -1,5 +1,5 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-import { HttpService } from '../../http.service';
+import { ImgService } from '../../img.service';
 import { MatCardModule } from '@angular/material/card'; 
 import { MatListModule } from '@angular/material/list'; 
 
@@ -16,7 +16,7 @@ export class CharacterCardComponent implements OnInit {
   image: any;
   species: any;
 
-  constructor(private _httpService: HttpService) {}
+  constructor(private _imgService: ImgService) {}
 
   ngOnInit() {
     this.images();
@@ -25,7 +25,7 @@ export class CharacterCardComponent implements OnInit {
   }
 
   async images() {
-    let data = <any>await this._httpService.getImage()
+    let data = <any>await this._imgService.getImage()
       .toPromise()
         .then((c: any []) => c.filter(x => x['name'] == this.char.name))
         .catch(e => e);
@@ -33,14 +33,14 @@ export class CharacterCardComponent implements OnInit {
   }
 
   async getHomeworld() {
-    this.homeworld = <any>await this._httpService.getApi(this.char.homeworld)
+    this.homeworld = <any>await this._imgService.getApi(this.char.homeworld)
       .toPromise()
         .then(hW => hW['name'])
         .catch(e => e);
   }
 
   async getSpecies() {
-    this.species = <any>await this._httpService.getApi(this.char.species[0])
+    this.species = <any>await this._imgService.getApi(this.char.species[0])
       .toPromise()
         .then(sP => sP['name'])
         .catch(e => e);
