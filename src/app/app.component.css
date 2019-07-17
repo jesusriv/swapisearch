@@ -1,0 +1,46 @@
+header {
+  box-shadow: 0 3px 5px #f0f0f0;
+  background-color: #f3f3f3;
+  margin: 0 auto;
+  padding: 20px 0;
+}
+
+header h1 {
+  color: #ad7d37;
+  font-size: 35px;
+  text-align: center;
+  margin: auto;
+}
+
+#container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+#loading {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+}
+
+#card-container {
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+}
+
+@media only screen and (min-width: 900px) {
+  #card-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    justify-content: center;
+    align-items: center;
+  }
+}

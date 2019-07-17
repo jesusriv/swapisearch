@@ -1,0 +1,56 @@
+.mat-list-base .mat-list-item, .mat-list-base .mat-list-option {
+  height: 40px;
+}
+
+#img {
+  width: 240px;
+  height: 265px;
+  overflow: hidden;
+}
+
+img {
+  max-width: 240px;
+  height: 100%;
+  object-fit: fill;
+}
+
+.outer-card {
+  display: flex;
+  width: 100%;
+}
+
+.outer-card ul {
+  width: 70%;
+  border: none;
+}
+
+.outer-card ul li {
+  width: 100%;
+  border: none;
+}
+
+:host {
+  width: 350px;
+  height: 265px;
+  margin: 20px auto;
+  border-radius: 10px;
+  background-color: white;
+}
+
+span {
+  font-weight: bold;
+}
+
+@media only screen and (max-width: 375px) {
+
+}
+
+@media only screen and (min-width: 580px) {
+  :host {
+    width: 550px;
+    height: 265px;
+    margin: 20px auto;
+    border-radius: 10px;
+    background-color: white;
+  }
+}

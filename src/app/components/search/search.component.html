@@ -1,0 +1,18 @@
+<form [formGroup]="myForm">
+  <mat-form-field id="filter">
+    <mat-label>Filter By</mat-label>
+    <mat-select formControlName="filter">
+      <mat-option>None</mat-option>
+      <mat-option value="Name">Name</mat-option>
+      <mat-option value="Gender">Gender</mat-option>
+      <mat-option value="Species">Species</mat-option>
+      <mat-option value="Homeworld">Homeworld</mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <mat-form-field class='full' id="search">
+    <input matInput placeholder="Search..." formControlName="result">
+  </mat-form-field>
+
+  <button mat-raised-button color="primary">Lightspeed</button>
+</form>

@@ -1,0 +1,17 @@
+@media only screen and (max-width: 580px) {
+  form {
+    width: 350px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  #filter {
+    width: 25%;
+  }
+
+  #search {
+    width: 40%;
+  }
+
+}

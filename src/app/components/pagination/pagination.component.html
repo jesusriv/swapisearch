@@ -1,0 +1,7 @@
+<nav *ngIf="pageNumbers" style="display: flex" id="pag-nav" style="width: 100%;">
+  <ul *ngFor="let number of pageNumbers" class='pagination'>
+    <!-- <li (click)="nextPage(number)" class='page-item page-link'>  -->
+    <button mat-raised-button (click)="nextPage(number)">{{ number }}</button>
+    <!-- </li> -->
+  </ul>
+</nav>

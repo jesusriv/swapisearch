@@ -1,0 +1,15 @@
+<mat-card-content class="outer-card" *ngIf="char">
+
+  <div id="img">
+    <img mat-card-image src="{{ image }}" alt="">
+  </div>
+
+  <mat-list class="list-group">
+    <mat-list-item style="font-size: 15px;">Name: {{ char.name }}</mat-list-item>
+    <mat-list-item style="font-size: 15px;">Gender: {{ char.gender }}</mat-list-item>
+    <mat-list-item style="font-size: 15px;">Species: {{ species }}</mat-list-item>
+    <mat-list-item style="font-size: 15px;">Height: {{ char.height }}</mat-list-item>
+    <mat-list-item style="font-size: 15px;">Birth Year: {{ char.birth_year }}</mat-list-item>
+    <mat-list-item style="font-size: 15px;">Homeworld: {{ homeworld }}</mat-list-item>
+  </mat-list>
+</mat-card-content>
