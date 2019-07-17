@@ -29,7 +29,7 @@ export class CharacterCardComponent implements OnInit {
       .toPromise()
         .then((c: any []) => c.filter(x => x['name'] == this.char.name))
         .catch(e => e);
-    this.image = data.filter(c => c['img'])
+    this.image = data.map(c => c['img'])
   }
 
   async getHomeworld() {
