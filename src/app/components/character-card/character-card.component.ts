@@ -25,11 +25,14 @@ export class CharacterCardComponent implements OnInit {
   }
 
   async images() {
-    let data = <any>await this._imgService.getImage()
-      .toPromise()
-        .then((c: any []) => c.filter(x => x['name'] == this.char.name))
-        .catch(e => e);
-    this.image = data.map(c => c['img'])
+    try {
+      const response = await this._imgService.getImage()
+        .toPromise()
+        .then((c: any[]) => c.filter(x => x['name'] == this.char.name));
+      this.image = response.map(c => c['img']);
+    } catch (err) {
+      console.log(err);
+    }
   }
 
   async getHomeworld() {

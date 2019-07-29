@@ -13,7 +13,7 @@ const CAHCE_KEY = 'httpCharacterCache'
 })
 export class AppComponent {
   totalCharacters = 87;
-  characters: any = [];
+  characters: any = []; 
   charactersPerPage = 6; 
   pageNumbers: any = [];
   currentPage = 1;
@@ -29,15 +29,6 @@ export class AppComponent {
   ngOnInit() {
     this.getAllCharacters();
   }
-
-  // async getAllCharacters() {
-  //   this.characters = <any>await this._httpService.apiCall()
-  //     .toPromise()
-  //       .then(d => d)
-  //       .catch(e => console.log());
-
-  //   this.currentCharacters = this.characters;
-  // }
 
   async getAllCharacters() {
     let data = <any>await this._httpService.getApi(this.apiLink)
@@ -75,4 +66,15 @@ export class AppComponent {
     this.indexOfFirstCharacter = this.indexOfLastCharacter - this.charactersPerPage;
     this.currentCharacters = this.characters.slice(this.indexOfFirstCharacter, this.indexOfLastCharacter);
   }
+
+
+   // async getAllCharacters() {
+  //   this.characters = <any>await this._httpService.apiCall()
+  //     .toPromise()
+  //       .then(d => d)
+  //       .catch(e => console.log());
+
+  //   this.currentCharacters = this.characters;
+  // }
+
 }

@@ -26,3 +26,12 @@ export class PaginationComponent implements OnInit {
   }
 
 }
+
+  // ngOnChanges(changes): void {
+  //   if(changes['change']) {
+  //     for(let i = 1; i <= Math.ceil(this.totalCharacters / this.charactersPerPage); i++) {
+  //       this.pageNumbers.push(i);
+  //     }
+  //     this.finished();
+  //   }
+  // }
