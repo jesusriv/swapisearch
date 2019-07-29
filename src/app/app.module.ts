@@ -19,13 +19,15 @@ import { MatCardModule } from '@angular/material/card';
 import { MatListModule } from '@angular/material/list'; 
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { SearchComponent } from './components/search/search.component';
+import { NextBtnsComponent } from './components/next-btns/next-btns.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     CharacterCardComponent,
     PaginationComponent,
-    SearchComponent
+    SearchComponent,
+    NextBtnsComponent
   ],
   imports: [
     BrowserModule,
