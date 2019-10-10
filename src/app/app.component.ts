@@ -3,9 +3,6 @@ import { HttpService } from './http.service';
 
 import { map, startWith } from 'rxjs/operators';
 
-// CAHCE_KEY
-const CAHCE_KEY = 'httpCharacterCache'
-
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -20,21 +17,26 @@ export class AppComponent {
   apiLink: any = "https://swapi.co/api/people";
 
   // Get current characters
-  indexOfLastCharacter = this.currentPage * this.charactersPerPage;
-  indexOfFirstCharacter = this.indexOfLastCharacter - this.charactersPerPage;
+  indexOfLastCharacter = this.currentPage * this.charactersPerPage; // 8
+  indexOfFirstCharacter = this.indexOfLastCharacter - this.charactersPerPage; // 4
   currentCharacters: any;
 
   constructor(private _httpService: HttpService) {}
 
   ngOnInit() {
+    console.log("Hello");
     this.getAllCharacters();
+    if(!this.characters) {
+      
+      
+    } 
   }
 
   async getAllCharacters() {
     let data = <any>await this._httpService.getApi(this.apiLink)
       .toPromise()
-        .then(d => d);
-    data['results'].forEach(c => this.characters.push(c))
+      .then(d => d);
+     data['results'].forEach(c => this.characters.push(c))
 
     this.currentCharacters = this.characters.slice(this.indexOfFirstCharacter, this.indexOfLastCharacter);
 
@@ -46,6 +48,7 @@ export class AppComponent {
             link = d['next'];
             d['results'].forEach(c => this.characters.push(c));
           });
+        console.log(this.characters); 
     }
   }
 

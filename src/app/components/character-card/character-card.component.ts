@@ -13,7 +13,7 @@ import { filter } from 'rxjs/operators';
 export class CharacterCardComponent implements OnInit {
   @Input() char: any;
   homeworld: any;
-  image: any;
+  image: any = {};
   species: any;
 
   constructor(private _imgService: ImgService) {}
@@ -29,7 +29,7 @@ export class CharacterCardComponent implements OnInit {
       const response = await this._imgService.getImage()
         .toPromise()
         .then((c: any[]) => c.filter(x => x['name'] == this.char.name));
-      this.image = response.map(c => c['img']);
+      this.image['img'] = response.map(c => c['img']);
     } catch (err) {
       console.log(err);
     }
