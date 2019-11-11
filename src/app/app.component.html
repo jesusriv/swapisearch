@@ -2,7 +2,7 @@
   <h1 *ngIf="currentCharacters">Star Wars</h1>
 </header>
 
-<div id="container">
+<div id="container" *ngIf="currentCharacters">
   <app-search [characters]="characters" [currentCharacters]="currentCharacters"
     (characterEvent)="recieveCharacter($event)" (resetEvent)="reset()"></app-search>
 
