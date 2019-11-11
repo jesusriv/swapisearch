@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpService } from './http.service';
+import { LocalStorageService } from './local-storage.service';
 
 import { map, startWith } from 'rxjs/operators';
 
@@ -10,7 +11,7 @@ import { map, startWith } from 'rxjs/operators';
 })
 export class AppComponent {
   totalCharacters = 87;
-  characters: any = []; 
+  characters: any[]; 
   charactersPerPage = 6; 
   pageNumbers: any = [];
   currentPage = 1;
@@ -21,22 +22,27 @@ export class AppComponent {
   indexOfFirstCharacter = this.indexOfLastCharacter - this.charactersPerPage; // 4
   currentCharacters: any;
 
-  constructor(private _httpService: HttpService) {}
+  constructor(
+    private _httpService: HttpService,
+    private _localStorage: LocalStorageService) {}
 
   ngOnInit() {
-    console.log("Hello");
-    this.getAllCharacters();
-    if(!this.characters) {
-      
-      
-    } 
+    if(!this._localStorage.getCharacters()) {
+      console.log("Hello");
+      this.getAllCharacters();
+    } else {
+      this.characters = this._localStorage.getCharacters();
+      this.currentCharacters = this.characters.slice(this.indexOfFirstCharacter, this.indexOfLastCharacter);
+    }
   }
 
   async getAllCharacters() {
     let data = <any>await this._httpService.getApi(this.apiLink)
       .toPromise()
-      .then(d => d);
-     data['results'].forEach(c => this.characters.push(c))
+      .then(d => d)
+      .catch(err => console.log(err));
+    this.characters = [];
+    data['results'].forEach(c => this.characters.push(c))
 
     this.currentCharacters = this.characters.slice(this.indexOfFirstCharacter, this.indexOfLastCharacter);
 
@@ -47,9 +53,10 @@ export class AppComponent {
           .then(d => {
             link = d['next'];
             d['results'].forEach(c => this.characters.push(c));
-          });
-        console.log(this.characters); 
+          })
+          .catch(err => console.log(err));
     }
+    this._localStorage.saveCharacters(this.characters); 
   }
 
   recieveCharacter(e) {

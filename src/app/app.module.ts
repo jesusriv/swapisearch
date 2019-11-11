@@ -1,6 +1,8 @@
 import { BrowserModule }    from '@angular/platform-browser';
 import { NgModule }         from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
+import { StorageServiceModule } from "ngx-webstorage-service";
+import { LocalStorageService } from './local-storage.service';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent }     from './app.component';
@@ -42,9 +44,10 @@ import { NextBtnsComponent } from './components/next-btns/next-btns.component';
     MatChipsModule,
     MatCardModule,
     MatListModule,
+    StorageServiceModule,
     MatProgressSpinnerModule
   ],
-  providers: [],
+  providers: [LocalStorageService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -47,10 +47,32 @@ span {
 
 @media only screen and (min-width: 580px) {
   :host {
-    width: 550px;
-    height: 265px;
+    width: 400px;
+    height: 200px;
     margin: 20px auto;
     border-radius: 10px;
     background-color: white;
+  }
+
+  #img {
+    width: 150px;
+    height: 200px;
+    overflow: hidden;
+  }
+  
+  img {
+    max-width: 240px;
+    height: 100%;
+    object-fit: fill;
+    object-position: center;
+  }
+
+  .list-group {
+    padding: 0;
+  }
+
+  .item {
+    font-size: 12px;
+    height: 10px;
   }
 }
